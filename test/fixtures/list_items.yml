@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  list: one
+  category: one
+  venue: one
+  notes: MyText
+  position: 1
+
+two:
+  list: two
+  category: two
+  venue: two
+  notes: MyText
+  position: 1

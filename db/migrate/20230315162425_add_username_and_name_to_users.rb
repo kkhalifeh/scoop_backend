@@ -1,0 +1,10 @@
+class AddUsernameAndNameToUsers < ActiveRecord::Migration[7.0]
+  def change
+    add_column :users, :username, :string
+    add_column :users, :first_name, :string
+    add_column :users, :last_name, :string
+
+    # Adding an index to the username to ensure uniqueness
+    add_index :users, :username, unique: true
+  end
+end
