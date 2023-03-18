@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
-  mount_devise_token_auth_for 'User', at: 'auth'
   # API routes are defined within the "api" namespace to keep them separate from any other non-API routes in the future
   namespace :api do
     namespace :v1 do
+      post 'firebase_sessions/create' # Updated from 'get' to 'post'
+
       # Users routes
       resources :users, only: [:show, :update] do
         # Custom route for updating user's profile picture
         put 'update_profile_picture', on: :member
       end
 
-      #Cities routes
+      # Cities routes
       resources :cities, only: [:index]
 
-      #Categories
+      # Categories
       resources :categories, only: [:index]
 
       # Lists routes

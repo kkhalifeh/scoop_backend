@@ -53,6 +53,21 @@ gem 'rack-cors'
 
 gem 'google-cloud-firestore'
 
+gem 'jwt'
+
+gem 'google-id-token'
+
+gem 'google-auth-library-ruby'
+
+gem 'byebug'
+
+gem 'firebase-admin'
+
+gem 'figaro'
+
+gem 'google-api-client'
+
+
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
