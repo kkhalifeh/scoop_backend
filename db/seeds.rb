@@ -1,58 +1,34 @@
-ListItem.destroy_all
+# Clear all data from tables except for users
+ListPlace.destroy_all
+Pin.destroy_all
+PlaceCategory.destroy_all
 List.destroy_all
-Venue.destroy_all
+Location.destroy_all
+Place.destroy_all
 Category.destroy_all
-City.destroy_all
 
-# Create predefined categories
-categories = [
-  { name: 'Breakfast' },
-  { name: 'Lunch' },
-  { name: 'Brunch' },
-  { name: 'Apres Ski' },
-  { name: 'Dinner' }
-]
-
-categories.each do |category|
-  Category.create!(category)
+# Reset primary key sequences
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
 end
 
-# Create some predefined cities
-cities = [
-  { name: 'New York', country: 'USA' },
-  { name: 'Paris', country: 'France' },
-  { name: 'London', country: 'UK' }
-]
+# Locations
+Location.create(city: 'Paris', country: 'France', latitude: 48.8566, longitude: 2.3522, image: 'https://www.yourimage.com/paris.jpg')
 
-cities.each do |city|
-  City.create!(city)
-end
+# Places
+Place.create(google_id: 'ChIJD7fiBh9u5kcRYJSMaMOCCwQ', name: 'Eiffel Tower', formatted_address: 'Champ de Mars, 5 Avenue Anatole France, 75007 Paris, France', formatted_phone_number: '+33 892 70 12 39', location: { 'lat': 48.8584, 'lng': 2.2945 }, website: 'https://www.toureiffel.paris/en', rating: '4.6', photo_ref: 'https://www.yourimage.com/eiffel-tower.jpg')
 
-# Create a sample user
-user = User.find_by(email: 'test8@gmail.com')
+# Categories
+Category.create(label: 'Food')
 
+# Lists
+List.create(location_id: 1, pinned: 1, user_id: 2)
 
+# ListPlaces
+ListPlace.create(list_id: 1, place_id: 1, note: 'A must-visit attraction')
 
-# Create a sample list for the user
-list = user.lists.create!(
-  city: City.find_by(name: 'New York')
-)
+# Pins
+Pin.create(user_id: 2, list_id: 1)
 
-# Create a sample venue
-venue = Venue.create!(
-  name: 'Central Park',
-  address: 'New York, NY',
-  google_place_id: 'ChIJ4zGFAZpYwokRGUGph3Mf37k',
-  phone_number: '+1 (212) 310-6600',
-  website: 'https://www.centralparknyc.org/',
-  reservation_url: nil,
-  image: 'https://example.com/image.jpg',
-  rating: 4.6
-)
-
-# Create a sample list item with a category
-list_item = list.list_items.create!(
-  category: Category.find_by(name: 'Breakfast'),
-  venue: venue,
-  notes: 'Great place for a morning walk!'
-)
+# PlaceCategories
+PlaceCategory.create(place_id: 1, category_id: 1, list_id: 1, note: 'Great view from the top!')

@@ -26,6 +26,9 @@ Rails.application.routes.draw do
         delete 'unpin', on: :member
       end
 
+      # Pins routes
+      resources :pins, only: [:index, :create, :destroy]
+
       # Pinned Lists routes
       resources :pinned_lists, only: [:index, :show]
     end

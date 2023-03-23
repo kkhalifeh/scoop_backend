@@ -1,14 +1,11 @@
 class List < ApplicationRecord
-  belongs_to :user
-  belongs_to :city
-  has_many :list_items, dependent: :destroy
-  has_many :venues, through: :list_items
-  has_many :pins, dependent: :destroy
-
-  validates :city, presence: true
-
-  # Method to get number of pins for the list
-  def pins_count
-    list_items.count
-  end
+  # belongs_to :location
+  belongs_to :location
+  belongs_to :author, class_name: 'User', foreign_key: 'user_id'
+  has_many :list_places
+  has_many :places, through: :list_places
+  has_many :pins
+  has_many :users, through: :pins
+  has_many :place_categories
+  has_many :categories, through: :place_categories
 end

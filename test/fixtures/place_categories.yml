@@ -1,11 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  label: MyString
+  place: one
+  category: one
+  list: one
+  note: MyText
   updated_at: MyString
   created_at: MyString
 
 two:
-  label: MyString
+  place: two
+  category: two
+  list: two
+  note: MyText
   updated_at: MyString
   created_at: MyString

@@ -1,11 +1,11 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  author_id: 1
-  location: one
-  pinned: 1
+  list: one
+  place: one
+  note: MyText
 
 two:
-  author_id: 1
-  location: two
-  pinned: 1
+  list: two
+  place: two
+  note: MyText

@@ -13,9 +13,27 @@ class Api::V1::UsersController < ApplicationController
     end
   end
 
+  # def show
+  #   @user = User.find(params[:id])
+  #   @lists = List.where(user_id: current_user.id)
+  #   if @lists
+  #     response = @lists.map do |list|
+  #       {
+  #         list_id: list.id,
+  #         city: list.location.city,
+  #       }
+  #     end
+  #     render json: {user: @user, lists: response}
+
+  #   else
+  #     render json: {error: "User has no lists, status: 400"}, status: 400
+
+  #   end
+  # end
+
   def show
-    @user = User.includes(lists: { list_items: :venue }).find(current_user.id)
-    render json: UserSerializer.new(@user, include: [:lists, :'lists.list_items', :'lists.list_items.venue']).serializable_hash.to_json
+    @user = User.find(params[:id])
+    render json: UserSerializer.new(@user, include: [:lists]).serialized_json
   end
   
   
