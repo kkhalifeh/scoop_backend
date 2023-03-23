@@ -1,6 +1,16 @@
-# app/serializers/list_item_serializer.rb
+class ListItemSerializer
+  include FastJsonapi::ObjectSerializer
 
-class ListItemSerializer < ActiveModel::Serializer
-  attributes :id, :category, :notes, :created_at, :updated_at
-  belongs_to :venue, serializer: VenueSerializer
+  set_type :list_item
+
+  attribute :id
+  attribute :list_id
+  attribute :category_id
+  attribute :venue_id
+  attribute :notes
+  attribute :position
+
+  belongs_to :list, record_type: :list
+  belongs_to :category, record_type: :category
+  belongs_to :venue, record_type: :venue, serializer: VenueSerializer
 end

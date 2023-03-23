@@ -3,7 +3,8 @@ class ListItemsController < ApplicationController
 
   # GET /lists/:list_id/list_items
   def index
-    render json: @list.list_items
+    @list_items = ListItem.all
+    render json: ListItemSerializer.new(@list_items, include: [:list, :category, :venue]).serializable_hash.to_json
   end
 
   # POST /lists/:list_id/list_items

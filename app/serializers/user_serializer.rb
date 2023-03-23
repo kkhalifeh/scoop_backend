@@ -1,7 +1,9 @@
-class UserSerializer < ActiveModel::Serializer
-  attributes :id, :email, :first_name, :last_name, :username, :profile_picture_url
+class UserSerializer
+  include FastJsonapi::ObjectSerializer
 
-  def profile_picture_url
-    object.profile_picture_url
-  end
+  set_type :user
+
+  attributes :email, :username, :first_name, :last_name, :mobile_number, :uid, :firebase_uid
+
+  has_many :lists, record_type: :list, serializer: ListSerializer
 end

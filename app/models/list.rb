@@ -6,4 +6,9 @@ class List < ApplicationRecord
   has_many :pins, dependent: :destroy
 
   validates :city, presence: true
+
+  # Method to get number of pins for the list
+  def pins_count
+    list_items.count
+  end
 end

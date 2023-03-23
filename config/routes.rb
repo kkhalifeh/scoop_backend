@@ -5,7 +5,7 @@ Rails.application.routes.draw do
       post 'firebase_sessions/create' # Updated from 'get' to 'post'
 
       # Users routes
-      resources :users, only: [:show, :update] do
+      resources :users, only: [:show, :update, :create] do
         # Custom route for updating user's profile picture
         put 'update_profile_picture', on: :member
       end

@@ -3,7 +3,6 @@ List.destroy_all
 Venue.destroy_all
 Category.destroy_all
 City.destroy_all
-User.destroy_all
 
 # Create predefined categories
 categories = [
@@ -30,15 +29,7 @@ cities.each do |city|
 end
 
 # Create a sample user
-user = User.create!(
-  email: 'test@example.com',
-  password: 'password',
-  password_confirmation: 'password',
-  username: 'test_user',
-  first_name: 'John',
-  last_name: 'Doe',
-  mobile_number: '1234567890'
-)
+user = User.find_by(email: 'test8@gmail.com')
 
 
 
